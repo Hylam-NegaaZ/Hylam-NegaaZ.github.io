@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Nhập</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <a id="top" href="trangchu.html"><img id="logo" src="assets/logo.png" alt=""></a>
+        <nav>
+            <a href="trangchu.html">Trang Chủ</a>
+            <a href="gioithieu.html">Giới Thiệu</a>
+            <a href="sanpham.html">Sản Phẩm</a>
+            <a href="tintuc.html">Tin Tức</a>
+            <a href="dangnhap.html">Đăng Nhập</a>
+            <a href="dangky.html">Đăng Ký</a>
+            <a href="lienhe.html">Liên Hệ</a>
+        </nav>
+    </header>
+
+    <main>
+        <form action="assets/user.php" method="post" enctype="application/x-www-form-urlencoded">
+        <fieldset>
+            <legend><b>ĐĂNG NHẬP</b></legend>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><img width="200px" src="assets/dangnhap/userlogin.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input name="email" type="email" placeholder="Vui lòng nhập email" required autofocus></td>
+                </tr>
+                <tr>
+                    <td>Mật Khẩu</td>
+                    <td><input name="psw" type="password" placeholder="Vui lòng nhập mật khẩu" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input value="Đăng Nhập" type="submit">
+                        <input value="Huỷ" type="reset">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <b>Bạn <a href="#">Quên Mật Khẩu?</a></b>
+                        <input type="checkbox" name="remember">Ghi nhớ cho lần đăng nhập sau
+                    </td>
+                </tr>
+                
+            </table>
+        </fieldset>            
+        </form>
+    </main>
+
+    <footer>
+        <p>c© 2021 Bản quyền thuộc về FreezeVN: 
+            <a href="#">facebook</a> 
+            <a href="#">twitter</a>
+            <a href="#">pinterest</a>
+            <a href="#">Về Đầu Trang</a>
+        </p>
+    </footer>
+</body>
+</html>

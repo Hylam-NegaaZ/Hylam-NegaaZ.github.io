@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Ký</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <a id="top" href="trangchu.html"><img id="logo" src="assets/logo.png" alt=""></a>
+        <nav>
+            <a href="trangchu.html">Trang Chủ</a>
+            <a href="gioithieu.html">Giới Thiệu</a>
+            <a href="sanpham.html">Sản Phẩm</a>
+            <a href="tintuc.html">Tin Tức</a>
+            <a href="dangnhap.html">Đăng Nhập</a>
+            <a href="dangky.html">Đăng Ký</a>
+            <a href="lienhe.html">Liên Hệ</a>
+        </nav>
+    </header>
+    <main>
+        <form action="assets/user.php" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend><b>ĐĂNG KÝ</b></legend>
+            <table>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input id="email" name="email" type="email" placeholder="Vui lòng nhập email" required autofocus></td>
+                </tr>
+                <tr>
+                    <td><label for="psw">Nhập mật khẩu</label></td>
+                    <td><input id="psw" name="psw" type="password" placeholder="Vui lòng nhập mật khẩu" required></td>
+                </tr>
+                <tr>
+                    <td><label for="psw2">Nhập lại mật khẩu</label></td>
+                    <td><input id="psw2" name="psw2" type="password" placeholder="Vui lòng nhập lại mật khẩu" required></td>
+                </tr>
+                <tr>
+                    <td>Cấp độ thành viên</td>
+                    <td>
+                        <input type="radio" name="memberType" checked value="bac">Bạc
+                        <input type="radio" name="memberType" value="vang">Vàng
+                        <input type="radio" name="memberType" value="bachkim">Bạch Kim
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ảnh đại diện</td>
+                    <td><input type="file" accept="image/*"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Thông qua việc tạo tài khoản, bạn đồng ý với <a href="#">Điều khoản & Quyền riêng tư của chúng tôi.</a></b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input value="Huỷ" type="reset">
+                        <input value="Đăng Ký" type="submit">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>            
+        </form>
+    </main>
+    <footer>
+        <p>© 2021 Bản quyền thuộc về FreezeVN: 
+            <a href="#">facebook</a> 
+            <a href="#">twitter</a>
+            <a href="#">pinterest</a>
+            <a href="#">Về Đầu Trang</a>
+        </p>
+    </footer>
+</body>
+</html>
