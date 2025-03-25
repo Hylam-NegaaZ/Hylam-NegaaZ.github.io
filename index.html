@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTU Souvenir Shop</title>
+    <link rel="stylesheet" href="Assets/css/fonts.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+</head>
+<body class="page">
+    <header class="page__header">
+        <nav class="header__nav">
+            <a class="nav-logo__link-logo nav-logo-mobile" href="index.html">C<span style="color: white;">SS</span></a>
+            <a class="nav-logo__link-logo nav-logo" href="index.html">CTU <span style="font-family: K2D; color: white;">Souvenir Shop</span></a>
+            <button class="hamburger-menu" onclick="NavToggle()"><i class="ri-menu-line"></i></button>
+            <ul id="top-nav" class="nav__link--flex-row">
+                <li>
+                    <div class="nav-search-bar">
+                        <input class="nav-search-bar__input" type="text" placeholder="Đồng phục CTU, Móc khoá Capybara">
+                        <i class="nav-search-bar__icon ri-search-eye-line"></i>
+                    </div>
+                </li>
+                <li class="link-cart link-mobile">
+                    <a class="link__item" href="">
+                        <i class="ri-shopping-cart-2-fill"></i><span>Giỏ hàng</span>
+                    </a>
+                </li>
+                <details class="nav-lang__details link__item link-mobile">
+                    <summary class="nav-logo__summary details__summary"><div class="nav-logo__button">Ngôn Ngữ</div></summary>
+                    <div class="details__container--lang">
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-gb"></i> English</a>
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-vn"></i> Tiếng Việt</a>
+                    </div>
+                </details>
+                <li><a class="link-support link-mobile" href="">Hỗ Trợ</a></li>
+                <li class="link-mobile">
+                    <a id="user-login" class="link-user--responsive link__item" href="html_login.html"><i class="ri-user-fill"></i></a>
+                    <a id="user-login" class="link-user link__item" href="html_login.html">Đăng Nhập</a>
+                </li>
+                <li class="link-mobile"><a id="user-sign-up" class="link-user link__item " href="html_signup.html">Đăng Ký</a></li>
+            </ul>
+        </nav>
+        <div class="header-informations">
+            <a href="danhmuc.html" class="nav__link--catalog"><i class="nav-search-list ri-book-2-line"></i>Danh Mục</a>
+            <marquee class="header-informations__announcement" behavior="scroll" direction="left">Thông Báo!</marquee>
+        </div>
+    </header>
+    
+    <main class="page__main">
+        <section class="page__slider">
+            <div class="slider">
+                <img src="Assets/img/ATL.jpg" alt="" id="slide-1">
+                <img src="Assets/img/Banner-01.jpg" alt="" id="slide-2">
+                <img src="Assets/img/LogoCTU_with_text_2.png" alt="" id="slide-3">
+            </div>
+            <div class="slider-nav">
+                <a href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
+            </div>
+        </section>
+        <h1>PHỔ BIẾN NHẤT</h1>
+        <section class="page__items--container">
+            <div id="item1" class="page__item--EO"></div>
+            <div id="item2" class="page__item--EO"></div>
+            <div id="item3" class="page__item--EO"></div>
+            <div id="item4" class="page__item--EO"></div>
+            <div id="item5" class="page__item--EO"></div>
+            <div id="item6" class="page__item--EO"></div>
+            <div id="item7" class="page__item--EO"></div>
+            <div id="item8" class="page__item--EO"></div>
+            <div id="item9" class="page__item--EO"></div>    
+        </section>
+    </main>
+    <footer class="page__footer">
+        <p class="footer-textbar footer-creator">&copy; 2025 - CT188 Nhóm 04 - Đại học Cần Thơ</p>
+        <div class="footer-logo">
+            <a href="https://www.ctu.edu.vn/"><img src="Assets/img/LogoCTU_with_text_2.png" alt="" width="350"></a>
+        </div>
+        <h5 class="footer-text">
+            Địa chỉ: Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT<br>
+            Email: dhct@ctu.edu.vn
+        </h5>
+        <div class="footer-textbar footer--flex">
+            <p>Lượt truy cập:</p>
+            <div class="footer-textbar__link">
+                <a href="https://youtube.com/ctudhct"><i class="ri-tiktok-fill"></i></a> 
+                <a href="https://youtube.com/ctudhct"><i class="ri-youtube-fill"></i></a> 
+                <a href="https://youtube.com/ctudhct"><i class="ri-facebook-fill"></i></a>
+            </div>
+        </div>
+        <button class="to-top"><i class="to-top__icon ri-arrow-up-line"></i></button>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="Assets/js/JavaScript.js"></script>
+</body>
+</html>
