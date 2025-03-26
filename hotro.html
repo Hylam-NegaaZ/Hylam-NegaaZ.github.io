@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ Trợ - CTU Souvenir Shop</title>
+    <link rel="stylesheet" href="Assets/css/hotrocss.css">
+    <link rel="stylesheet" href="Assets/css/fonts.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+</head>
+
+<body>
+    <header class="page__header">
+        <nav class="header__nav">
+            <a class="nav-logo__link-logo nav-logo-mobile" href="index.html">C<span style="color: white;">SS</span></a>
+            <a class="nav-logo__link-logo nav-logo" href="index.html">CTU <span style="font-family: K2D; color: white;">Souvenir Shop</span></a>
+            <button class="hamburger-menu" onclick="toggleNav()"><i class="ri-menu-line"></i></button>
+            <ul id="top-nav" class="nav__link--flex-row">
+                <li class="link-cart link-mobile">
+                    <a class="link__item" href="">
+                        <i class="ri-shopping-cart-2-fill"></i><span>Giỏ hàng</span>
+                    </a>
+                </li>
+                <details class="nav-lang__details link__item link-mobile">
+                    <summary class="nav-logo__summary details__summary"><div class="nav-logo__button">Ngôn Ngữ</div></summary>
+                    <div class="details__container--lang">
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-gb"></i> English</a>
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-vn"></i> Tiếng Việt</a>
+                    </div>
+                </details>
+                <li><a class="link-support link-mobile" href="hotro.html">Hỗ Trợ</a></li>
+                <li class="link-mobile">
+                    <a id="user-login" class="link-user--responsive link__item" href="html_login.html"><i class="ri-user-fill"></i></a>
+                    <a id="user-login" class="link-user link__item" href="html_login.html">Đăng Nhập</a>
+                </li>
+                <li class="link-mobile"><a id="user-sign-up" class="link-user link__item " href="html_signup.html">Đăng Ký</a></li>
+            </ul>
+        </nav>
+        <marquee class="header-informations__announcement" behavior="scroll" direction="left" style="border-bottom: 2px solid var(--ctu-light-blue);">Thông Báo!</marquee>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <div class="contact">
+                <div class="title">
+                    <h4>LIÊN HỆ VỚI CHÚNG TÔI</h4>
+                    <p class="sub-title" style="font-weight: bold;">Hãy liên hệ với chúng tôi để biết thêm thông tin chi tiết và được hỗ trợ !!!</p>
+                </div>
+                <div class="infor-container">
+                    <div class="infor-item">
+                        <i class="ri-map-pin-line"></i>
+                        <i> Trường CNTT&TT - Đại học Cần Thơ</i>
+                    </div>
+
+                    <div class="infor-item">
+                        <i class="ri-customer-service-line"></i>
+                        <i>  ĐT: +84292 3831 530; 3838 237; 3832 663/</i>
+                    </div>
+
+                    <div class="infor-item">
+                        <i class="ri-mail-line"></i>
+                        <i> css.ctu.edu.vn</i>
+                    </div>
+                </div>
+                <div class="title">
+                    <p class="sub-title" style="font-weight: bold;">Hoặc để lại thông tin để chúng tôi có thể liên hệ với bạn:</p>
+                </div>
+                <div>
+                    <form action="">
+                            <div class="item">
+                                <div class="enter-item">
+                                    <input type="text" id="name" placeholder="Họ và tên">
+                                </div>
+                                <p class="mess-error"></p>
+                            </div>
+
+                            <div class="item">
+                                <div class="enter-item">
+                                    <input type="text" id="tel" placeholder="Số điện thoại">
+                                </div>
+                                <p class="mess-error"></p>
+                            </div>
+
+                            <div class="item">
+                                <div class="enter-item">
+                                    <input type="email" id="email" placeholder="Email">
+                                </div>
+                                <p class="mess-error"></p>
+                            </div>
+                            <button type="button" class="confirm-btn" id="send-infor" onclick="confirmContactForm()">Gửi thông tin</button>
+                            <button type="reset" class="clear-btn" id="clear-infor" onclick="resetContactForm()">Hủy</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.84151844204!2d105.76804037507836!3d10.029933690076968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0883d2192b0f1%3A0x4c90a391d232ccce!2zVHLGsOG7nW5nIEPDtG5nIE5naOG7hyBUaMO0bmcgVGluIHbDoCBUcnV54buBbiBUaMO0bmcgKENUVSk!5e0!3m2!1svi!2s!4v1714704246324!5m2!1svi!2s"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </main>
+    <footer class="page__footer">
+        <p class="footer-textbar footer-creator">© 2025 - CT188 Nhóm 04 - Đại học Cần Thơ</p>
+        <div class="footer-logo">
+            <a href="https://www.ctu.edu.vn/"><img src="Assets/img/LogoCTU_with_text_2.png" alt="" width="350"></a>
+        </div>
+        <h5 class="footer-text">
+            Địa chỉ: Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT<br>
+            Email: dhct@ctu.edu.vn
+        </h5>
+        <div class="footer-textbar footer--flex">
+            <p>Lượt truy cập:</p>
+            <div class="footer-textbar__link">
+                <a href="https://youtube.com/ctudhct"><i class="ri-tiktok-fill"></i></a>
+                <a href="https://youtube.com/ctudhct"><i class="ri-youtube-fill"></i></a>
+                <a href="https://youtube.com/ctudhct"><i class="ri-facebook-fill"></i></a>
+            </div>
+        </div>
+        <button class="to-top"><i class="to-top__icon ri-arrow-up-line"></i></button>
+    </footer>
+
+    <script src="Assets/js/JavaScript.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    
+      if (toTopBtn) { 
+        toTopBtn.addEventListener('click', function(event) {
+          event.preventDefault(); 
+    
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+          });
+        });
+      }
+    });
+    function confirmContactForm() {
+            alert('Thông tin đã được gửi (chức năng thực tế cần được triển khai)');
+        }
+
+        function resetContactForm() {
+            document.querySelector('form').reset();
+        }
+    </script>
+
+</body>

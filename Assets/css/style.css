@@ -15,6 +15,7 @@
 html {
     scroll-behavior: smooth;
 }
+body{font-family: K2D-bold, Headex, sans-serif;}
 
 .page{
     margin: 0 auto;
@@ -22,7 +23,6 @@ html {
     background-color: white;
     font-family: K2D-bold, Headex, sans-serif;
     font-size: 1vw;
-
 }
 .page__header{
     position: sticky;

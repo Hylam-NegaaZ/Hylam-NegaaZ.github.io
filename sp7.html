@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
 </head>
-<body class="page">
+<body id="sp7" class="page">
     <header class="page__header">
         <nav class="header__nav">
             <a class="nav-logo__link-logo nav-logo-mobile" href="index.html">C<span style="color: white;">SS</span></a>
@@ -34,7 +34,7 @@
                         <a class="details__link--lang" onclick="" href=""><i class="fi fi-vn"></i> Tiếng Việt</a>
                     </div>
                 </details>
-                <li><a class="link-support link-mobile" href="hotro.html">Hỗ Trợ</a></li>
+                <li><a class="link-support link-mobile" href="">Hỗ Trợ</a></li>
                 <li class="link-mobile">
                     <a id="user-login" class="link-user--responsive link__item" href="html_login.html"><i class="ri-user-fill"></i></a>
                     <a id="user-login" class="link-user link__item" href="html_login.html">Đăng Nhập</a>
@@ -47,32 +47,66 @@
             <marquee class="header-informations__announcement" behavior="scroll" direction="left">Thông Báo!</marquee>
         </div>
     </header>
-    
-    <main class="page__main">
-        <section class="page__slider">
-            <div class="slider">
-                <img src="Assets/img/Banner-02.png" alt="" id="slide-1">
-                <img src="Assets/img/Banner-01.jpg" alt="" id="slide-2">
-                <img src="Assets/img/LogoCTU_with_text_2.png" alt="" id="slide-3">
-            </div>
-            <div class="slider-nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
+
+    <main class="page__main--product">
+        <div class="product__illustration">
+            <figure class="product__images">
+                <div class="list">
+                    <div class="item"><img src="Assets/img/items/7-1.png" alt=""></div>
+                    <div class="item"><img src="Assets/img/items/7-2.png" alt=""></div>
+                </div>
+                <div class="button">
+                    <button id="pb-prev"><</button>
+                    <button id="pb-next">></button>
+                </div>
+                <ul class="img-nav">
+                    <li class="active"><img src="Assets/img/items/7-1.png" alt=""></li>
+                    <li><img src="Assets/img/items/7-2.png" alt=""></li>
+                </ul>
+            </figure>
+        </div>
+        <section class="product__interaction">
+            <h1 class="interaction__title">Cốc sứ CTU</h1>
+            <div class="interaction__statics">
+                <span id="rating" class="statics__rating">4.7/5 <i class="ri-star-fill"></i></span>
+                &nbsp;&vert;&nbsp;
+                <span class="statics__rates">203 Đánh giá</span>
+                &nbsp;&vert;&nbsp;
+                <span class="statics__sold">1k+ Đã bán</span>
+                <h2 class="item-price interaction__price">100.000đ</h2>
+                <h3>Phân loại</h3>
+                <div class="interaction__types">
+                    <span>Màu: </span>
+                    <input class="statics__type" type="radio" name="color" id="ctu-blue" style="accent-color: #0376a1;" checked>
+                    <input class="statics__type" type="radio" name="color" id="white" style="accent-color: #ffffff;">
+                </div>
+                &nbsp;
+                <div class="interaction__quantity">
+                    <span>Số lượng: &nbsp;</span>
+                    <div class="quantity__button">
+                        <button id="quantity-minus" onclick="stepper(this)">-</button>
+                        <input type="number" name="" id="cart-quantity" min="1" max="99" value="1">
+                        <button id="quantity-plus" onclick="stepper(this)">+</button>
+                    </div>
+                    <span>&nbsp; 313 Sản phẩm có sẵn</span>
+                </div>
+                <div class="interaction__order">
+                    <a href="#" class="order__to-cart"><i class="ri-shopping-cart-line"></i> Thêm Vào Giỏ Hàng</a>
+                    <a href="#" class="order__buy-now">Mua Ngay</a>
+                </div>
             </div>
         </section>
-        <h1>PHỔ BIẾN NHẤT</h1>
-        <section class="page__items--container">
+        <article class="product__information">
+            <h2>Thông Tin Chi Tiết</h2>
+            <p>Thưởng thức đồ uống yêu thích của bạn với Cốc Sứ CTU cao cấp, mang đậm dấu ấn Đại Học Cần Thơ!</p>
+            <p>Chất liệu sứ tráng men cao cấp: Bề mặt sáng bóng, mịn màng, dễ dàng vệ sinh, an toàn cho sức khỏe.</p>
+            <p>Công nghệ in 3D UV hiện đại: Hình ảnh sắc nét, bền màu, không bong tróc theo thời gian.</p>
+            <p>Dung tích 330ml: Vừa vặn cho cà phê, trà, hoặc các loại đồ uống khác.</p>
+        </article>
+        <aside class="product__recomendation">
+            <h1>Recomendation</h1>
             <div id="item1" class="page__item--EO"></div>
-            <div id="item2" class="page__item--EO"></div>
-            <div id="item3" class="page__item--EO"></div>
-            <div id="item4" class="page__item--EO"></div>
-            <div id="item5" class="page__item--EO"></div>
-            <div id="item6" class="page__item--EO"></div>
-            <div id="item7" class="page__item--EO"></div>
-            <div id="item8" class="page__item--EO"></div>
-            <div id="item9" class="page__item--EO"></div>    
-        </section>
+        </aside>
     </main>
     <footer class="page__footer">
         <p class="footer-textbar footer-creator">&copy; 2025 - CT188 Nhóm 04 - Đại học Cần Thơ</p>
@@ -93,9 +127,7 @@
         </div>
         <button class="to-top"><i class="to-top__icon ri-arrow-up-line"></i></button>
     </footer>
-
-    
-    <!-- JavaScript -->
     <script src="Assets/js/JavaScript.js"></script>
+    <script src="Assets/js/mathang.js"></script>
 </body>
 </html>
