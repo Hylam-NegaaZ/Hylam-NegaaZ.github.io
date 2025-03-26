@@ -68,14 +68,42 @@
             </figure>
         </div>
         <section class="product__interaction">
-            <h1 class="interaction__title">Đồng phục CTU</h1>
+            <h1 class="interaction__title">Đồng phục CTU mới nhất giá sốc</h1>
             <div class="interaction__statics">
                 <span id="rating" class="statics__rating">
+                    4.8/5
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
                 </span>
                 &nbsp;&vert;&nbsp;
-                <span class="statics__sold">1k+ đã bán</span>
+                <span class="statics__rates">203 Đánh giá</span>
+                &nbsp;&vert;&nbsp;
+                <span class="statics__sold">1k+ Đã bán</span>
+                <h2 class="item-price interaction__price">90.000đ&nbsp;<span style="font-size: 12px; text-decoration: line-through;">(130.000đ)</span></h2>
+                <h3>Phân loại</h3>
+                <div class="interaction__types">
+                    <span>Màu: </span>
+                    <input class="statics__type" type="radio" name="color" id="white" style="accent-color: white;" checked>
+                    <input class="statics__type" type="radio" name="color" id="ctu-light-blue" style="accent-color: var(--ctu-light-blue);">
+                    <input class="statics__type" type="radio" name="color" id="ctu-deep-blue" style="accent-color: var(--ctu-deep-blue);">
+                </div>&nbsp;
+                <div class="interaction__quantity">
+                    <span>Số lượng: &nbsp;</span>
+                    <div class="quantity__button">
+                        <button id="quantity-minus" onclick="stepper(this)">-</button>
+                        <input type="number" name="" id="cart-quantity" min="1" max="99" value="1">
+                        <button id="quantity-plus" onclick="stepper(this)">+</button>
+                    </div>
+                    <span>&nbsp; 313 Sản phẩm có sẵn</span>
+                </div>
+                <div class="interaction__order">
+                    <a href="#" class="order__to-cart"><i class="ri-shopping-cart-line"></i> Thêm Vào Giỏ Hàng</a>
+                    <a href="#" class="order__buy-now">Mua Ngay</a>
+                </div>
             </div>
-
         </section>
         <article class="product__information">
             <h2>Thông Tin Chi Tiết</h2>
@@ -130,5 +158,6 @@
 
     <!-- JavaScript -->
     <script src="Assets/js/JavaScript.js"></script>
+    <script src="Assets/js/mathang.js"></script>
 </body>
 </html>

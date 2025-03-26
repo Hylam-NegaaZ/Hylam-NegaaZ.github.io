@@ -1,9 +1,3 @@
-/* Biến */
-const ComputerWidth = '1024px';
-const TabletWidth = '768px';
-const PhoneWidth = '480px';
-
-
 /* Hamburger Menu Toggle */
 function NavToggle() {
     if (document.querySelector(".nav__link--flex-row")){
@@ -12,17 +6,35 @@ function NavToggle() {
 }
     
 
-/* function MenuToggle() {                                                <============ BAD METHOD
-    var MenuItems = document.querySelectorAll('.menu--hidden');
-    for (let i = 0; i < MenuItems.length; i++){
-        if (MenuItems[i].style.display === "none"){
-            MenuItems[i].style.display = "block";
-        } else {
-            MenuItems[i].style.display = "none";
-        }
-    }
+/* JS Giỏ hàng */
+let cart = []; // Giỏ hàng sẽ lưu tên sản phẩm
+const cartCount = document.getElementById("cart-count");
+const cartModal = document.getElementById("cart-modal");
+const cartItems = document.getElementById("cart-items");
+const closeCartButton = document.getElementById("close-cart");
+
+// Hàm thêm sản phẩm vào giỏ hàng
+function AddToCart(id) {
+    cart.push(id);
+    updateCartDisplay();
 }
- */
+
+// Cập nhật hiển thị số lượng sản phẩm trong giỏ hàng
+function updateCartDisplay() {
+    cartCount.textContent = cart.length;
+    updateCartItems();
+}
+
+// Cập nhật các sản phẩm trong giỏ hàng
+function updateCartItems() {
+    cartItems.innerHTML = ''; // Xóa danh sách cũ
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        cartItems.appendChild(li);
+    });
+}
+
 
 /* Import Json */
 getDataCatalog();
@@ -49,7 +61,7 @@ async function getDataCatalog() {
             + discountStr
             + '<div class="item-rating">' + getStars(itemData[itemNumber].rating) + itemData[itemNumber].rating + '/5</div>'
             + '<p class="item-description">' + itemData[itemNumber].description + '</p>'
-            + '<a id="c-'+ itemData[itemNumber].id +'" href="#" class="cart-add"><i class="ri-add-fill"></i></a>'
+            + '<a id="c-'+ itemData[itemNumber].id +'" href="#" class="cart-add" onclick=AddToCart("'+ itemData[itemNumber].id +'")><i class="ri-add-fill"></i></a>'
         ;
     }
 }
@@ -59,56 +71,6 @@ async function getData() {
 
     return data;
 }
-
-/* Thanh thông báo */
-
-/* JS slider dành cho sản phẩm */
-let list = document.querySelector('.product__images .list');
-let items = document.querySelectorAll('.product__images .list .item');
-let navImages = document.querySelectorAll('.product__images .img-nav li');
-let pbPrev = document.getElementById('pb-prev');
-let pbNext = document.getElementById('pb-next');
-
-let active = 0;
-let lengthItems = items.length - 1;
-
-/* click chuột */
-pbNext.onclick = function(){
-    if(active + 1 > lengthItems){
-        active = 0
-    } else active += 1;
-    reloadSlider();
-}
-pbPrev.onclick = function(){
-    if(active - 1 < 0){
-        active = lengthItems
-    } else active -= 1;
-    reloadSlider();
-}
-/* tự động chuyển slide */
-let refreshSlider = setInterval(()=>{pbNext.click()},5000);
-
-function reloadSlider(){
-    let checkLeft = items[active].offsetLeft;
-    list.style.left = -checkLeft + 'px';
-
-    let lastActiveImg = document.querySelector('.product__images .img-nav li.active');
-    lastActiveImg.classList.remove('active');
-    navImages[active].classList.add('active');
-
-    clearInterval(refreshSlider);
-    refreshSlider = setInterval(()=>{pbNext.click()},5000);
-}
-
-/* click vào img để chuyển slide */
-navImages.forEach((li,key) => {
-    li.addEventListener('click', function(){
-        active = key;
-        reloadSlider();
-    })
-})
-
-
 
 /* tự động tạo ra icon sao - Nguồn Stackoverflow có qua chỉnh sửa*/
 function getStars(rating) {
@@ -134,6 +96,17 @@ function getStars(rating) {
 function checkStar(rate) {
     document.getElementById("rating").innerHTML += getStars(rate);
 }
+
+
+
+
+
+
+
+
+
+
+
 /* Footer => To-top */
 const toTopBtn = document.querySelector(".to-top");
 window.addEventListener('scroll', () => {

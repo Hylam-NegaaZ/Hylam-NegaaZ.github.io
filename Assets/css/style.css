@@ -9,6 +9,8 @@
     --search-bar-height: 35px;
     --nav-height: 100px;
     
+    --css-light-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+    --css-high-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
 }
 
 .page{
@@ -248,7 +250,7 @@ p{
     scroll-behavior: smooth;
     max-height: 50vh;
     border-radius: 1rem;
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
 }
 .slider::-webkit-scrollbar{
     display: none;
@@ -304,7 +306,7 @@ p{
 
     transition: all 200ms ease;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
 }
 .page__item--EO a{
     color: var(--ctu-deep-blue);
@@ -317,7 +319,7 @@ p{
     margin: auto;
     padding: 0.5rem;
 }
-.page__item--EO img{
+.page__item--EO img{    
     max-height: 100%;
     max-width: 100%;
 
@@ -420,7 +422,7 @@ p{
 
     transition: all 200ms ease;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
 }
 
 .page__filter--container .filter__box input:hover, .page__filter--container .filter__box label:hover{
@@ -445,6 +447,7 @@ p{
     grid-template-columns: 2fr 2fr 2fr 2fr;
     grid-template-areas: 
     "product-images product-interaction product-interaction product-interaction"
+    ". product-interaction product-interaction product-interaction"
     "product-information product-information product-recomendation product-recomendation";
 
     max-width: 1024px;
@@ -454,13 +457,13 @@ p{
 
 /* Ảnh và Slider */
 .product__illustration{
+    grid-area: product-images;
     padding: 1rem;
     border-radius: 1rem;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
 }
 .product__images{
-    grid-area: product-images;
     position: relative;
     width: 20vw;
     height: 20vw;
@@ -545,10 +548,12 @@ p{
 /* Nội dung chính & thanh nav dành cho việc chọn lựa theo sở thích*/
 .product__interaction{
     grid-area: product-interaction;
-    padding: 1rem;
+    height: 100%;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
     
 }
 .interaction__statics{
@@ -558,12 +563,115 @@ p{
 .interaction__statics .statics__rating{
     color: var(--ctu-yellow);
 }
+.interaction__price{
+    padding: 1rem; 
+
+    color: var(--css-red); 
+    background-color: cornsilk; 
+    
+    font-size: xx-large;
+}
+.interaction__types{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.interaction__types input[type="radio"] {
+    height: 2rem;
+    width: 2rem;
+}
+
+.interaction__quantity{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.interaction__quantity .quantity__button{
+    display: flex;
+    box-shadow: var(--css-light-shadow);
+}
+.interaction__quantity .quantity__button button, .interaction__quantity .quantity__button input{
+    text-align: center;
+    
+    border: none;
+    background-color: white;
+
+    transition: 200ms;
+
+    font-size: 1.5rem;
+    font-family: K2D, Readex, sans-serif;
+}
+.interaction__quantity .quantity__button button:hover{
+    cursor: pointer;
+    background-color: #00afef7f;
+}
+.interaction__quantity .quantity__button input::-webkit-inner-spin-button, .interaction__quantity .quantity__button input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.interaction__quantity #quantity-minus{
+    width: 40px;
+    height: 40px;
+}
+.interaction__quantity #quantity-plus{
+    width: 40px;
+    height: 40px;
+}
+
+.interaction__order{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin: 2rem 0;
+    padding: 0 3rem;
+}
+.interaction__order a{
+    font-size: 0.9vw;
+    text-decoration: none;
+}
+.interaction__order .order__to-cart{
+    text-align: center;
+    padding: 1rem;
+    width: 40%;
+
+    transition: 200ms ease-in;
+
+    color: var(--ctu-deep-blue);
+    background-color: #dbf3fa;
+
+    border: 3px solid var(--ctu-deep-blue);
+    border-radius: 3px;
+}
+.interaction__order .order__to-cart:hover{
+    color: var(--ctu-yellow);
+    background-color: var(--ctu-deep-blue);
+}
+.interaction__order .order__buy-now{
+    text-align: center;
+    padding: 1rem;
+    width: 40%;
+
+    transition: 200ms ease-in;
+
+    color:	#dbf3fa;
+    background-color: var(--ctu-deep-blue);
+
+    border: 3px solid var(--ctu-deep-blue);
+    border-radius: 3px;
+}
+.interaction__order .order__buy-now:hover{
+    color: var(--ctu-yellow);
+}
+
+
+
 .product__information{
     grid-area: product-information;
+    margin: 2rem 0;
     padding: 1rem;
     border-radius: 1rem;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
     
 }
 .product__recomendation{
@@ -571,10 +679,11 @@ p{
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: product-recomendation;
-    padding: 1rem;
+    margin: 2rem 0;
+    padding: 2rem;
     border-radius: 1rem;
 
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--css-high-shadow);
 
     justify-content: space-around;
 }
@@ -703,7 +812,7 @@ p{
         background-color: var(--css-red);
     }
     .page__item--EO .cart-add::after{
-        content: 'thêm vào giỏ';
+        content: 'Thêm vào giỏ hàng';
     }
     .page__item--EO:hover .cart-add{
         clip-path: none;
@@ -728,6 +837,43 @@ p{
         display: block;
     }
     .page__filter--container{display: none;}
+
+    /* mathang_template.html */
+    .page__main--product{
+        display: grid;
+        margin: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "product-images"
+        "product-interaction"
+        "product-information"
+        "product-recomendation";
+    }
+    .product__illustration, .product__information, .product__interaction, .product__recomendation{
+        box-shadow: var(--css-light-shadow);
+    }
+    .product__images{
+        width: 80vw;
+        height: 80vw;
+    }
+    .interaction__order{
+        margin: 0 auto;
+        width: 70%;
+        padding: 0;
+        display: block;
+    }
+    .interaction__order .order__buy-now, .interaction__order .order__to-cart{
+        font-size: 1rem;
+        margin: 1rem 0;
+        display: block;
+        width: 100%;
+    }
+    .interaction__order .order__to-cart{
+   
+    }
+    .interaction__order .order__buy-now{
+
+    }
 }
 
 /* PHONE SIZE */
@@ -765,7 +911,7 @@ p{
     }
 
     .nav__link--flex-row{
-        display: block;
+        display: none;
         margin: 0;
         padding: 0;
         gap: 2px;
@@ -776,13 +922,12 @@ p{
         text-align: center;
     }
     .nav__link--flex-row .link-mobile{
-    
         padding: 1rem 0;
     }
     .nav__link--flex-row .link-mobile:hover{
         background-color: var(--ctu-light-blue);
     }
-    .nav__link--flex-row.active{display: none;}
+    .nav__link--flex-row.active{display: block;}
 
     .header-informations{
         display: block;
