@@ -12,6 +12,9 @@
     --css-light-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.2);
     --css-high-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
 }
+html {
+    scroll-behavior: smooth;
+}
 
 .page{
     margin: 0 auto;
@@ -100,6 +103,10 @@ p{
 }
 .nav__link--flex-row *:hover{
     color: var(--ctu-yellow);
+}
+
+.header__nav .ri-shopping-cart-2-fill{
+    position: relative;
 }
 
 /* Thanh tìm kiếm */
@@ -867,12 +874,6 @@ p{
         margin: 1rem 0;
         display: block;
         width: 100%;
-    }
-    .interaction__order .order__to-cart{
-   
-    }
-    .interaction__order .order__buy-now{
-
     }
 }
 

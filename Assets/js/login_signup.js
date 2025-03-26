@@ -108,12 +108,13 @@ function singup() {
 }
 function cancel() {
     // Xóa dữ liệu trong các trường input của form
-    document.getElementById('username').value = '';
     document.getElementById('email').value = '';
     document.getElementById('pwd').value = '';
+
+    document.getElementById('username').value = '';   
     document.getElementById('pre-pwd').value = '';
     return false;
 }
 function turnback() {
-    window.location.href = "html_index.html";
+    window.location.href = "index.html";
 }

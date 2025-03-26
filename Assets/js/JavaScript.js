@@ -97,16 +97,6 @@ function checkStar(rate) {
     document.getElementById("rating").innerHTML += getStars(rate);
 }
 
-
-
-
-
-
-
-
-
-
-
 /* Footer => To-top */
 const toTopBtn = document.querySelector(".to-top");
 window.addEventListener('scroll', () => {
