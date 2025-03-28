@@ -4,41 +4,8 @@ function NavToggle() {
         document.querySelector(".nav__link--flex-row").classList.toggle('active');
     }
 }
-    
-
-/* JS Giỏ hàng */
-let cart = []; // Giỏ hàng sẽ lưu tên sản phẩm
-const cartCount = document.getElementById("cart-count");
-const cartModal = document.getElementById("cart-modal");
-const cartItems = document.getElementById("cart-items");
-const closeCartButton = document.getElementById("close-cart");
-
-// Hàm thêm sản phẩm vào giỏ hàng
-function AddToCart(id) {
-    cart.push(id);
-    updateCartDisplay();
-}
-
-// Cập nhật hiển thị số lượng sản phẩm trong giỏ hàng
-function updateCartDisplay() {
-    cartCount.textContent = cart.length;
-    updateCartItems();
-}
-
-// Cập nhật các sản phẩm trong giỏ hàng
-function updateCartItems() {
-    cartItems.innerHTML = ''; // Xóa danh sách cũ
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        cartItems.appendChild(li);
-    });
-}
-
 
 /* Import Json */
-getDataCatalog();
-
 async function getDataCatalog() {
     const itemData = await getData();
     const itemEO = document.querySelectorAll(".page__item--EO");
@@ -55,21 +22,54 @@ async function getDataCatalog() {
         /* sinh mã HTML */
         if (itemData[itemNumber].id)
         itemEO[itemNumber].innerHTML += 
-            '<a id="' + itemData[itemNumber].id + '" href="mathang_template.html">'
-            + '<figure><img src="' + itemData[itemNumber].images[0] + '" alt="">'
-            + '<figcaption>' + itemData[itemNumber].title 
+            '<a id="' + itemData[itemNumber].id + '" href="mathang.html" onclick="getId(event)">'
+            + '<figure><img src="' + itemData[itemNumber].images[0] + '" alt=""></figure>'
+            + '<figcaption>' + itemData[itemNumber].title + '</figcaption>'
             + discountStr
             + '<div class="item-rating">' + getStars(itemData[itemNumber].rating) + itemData[itemNumber].rating + '/5</div>'
             + '<p class="item-description">' + itemData[itemNumber].description + '</p>'
-            + '<a id="c-'+ itemData[itemNumber].id +'" href="#" class="cart-add" onclick=AddToCart("'+ itemData[itemNumber].id +'")><i class="ri-add-fill"></i></a>'
+            + '<a id="c-'+ itemData[itemNumber].id +'" href="javascript:void(0);" class="order__to-cart cart-add" onclick="addToCart(\'' + itemData[itemNumber].title  + '\', ' + priceNum + ')"><i class="ri-add-fill"></i></a>'
         ;
-    }
+    } /*  */
 }
 async function getData() {
     const res = await fetch("Assets/js/data.json");
     const data = await res.json();
 
     return data;
+}
+
+
+/* Hàm tự động lấy Id từ thẻ <a> */
+function getId(event){
+    event.preventDefault();
+
+    const itemLink = event.currentTarget;
+    const itemLinkId = itemLink.id;
+    const url = new URL(itemLink.href);
+
+    url.searchParams.set('id', itemLinkId);
+
+    window.location.href = url.toString();
+}
+
+// thêm vào giỏ hàng
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+    let item = cart.find(i => i.name === name);
+
+    if (item) {
+        item.quantity++;
+    } else {
+        cart.push({ name: name, price: price, quantity: 1 });
+    }
+
+    // Lưu lại giỏ hàng vào localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Sản phẩm đã được thêm vào giỏ hàng!");
 }
 
 /* tự động tạo ra icon sao - Nguồn Stackoverflow có qua chỉnh sửa*/

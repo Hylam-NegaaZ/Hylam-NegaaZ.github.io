@@ -334,13 +334,10 @@ p{
     aspect-ratio: 1/1;
 }
 .page__item--EO figcaption{
-    margin-top: 10px;
-    padding: 0.5rem;
     color: var(--ctu-deep-blue);
 
-    font-size: 1.2vw;
+    font-size: 1.3vw;
     font-family: K2D-Bold, Readex, sans-serif;
-
 }
 .page__item--EO .item-price{
     color: var(--ctu-light-blue);
@@ -570,8 +567,10 @@ p{
 .interaction__statics .statics__rating{
     color: var(--ctu-yellow);
 }
+
+
 .interaction__price{
-    padding: 1rem; 
+    padding: 0.5rem 1rem; 
 
     color: var(--css-red); 
     background-color: cornsilk; 
@@ -709,10 +708,7 @@ p{
     color: white;
     box-shadow: 0 2px 5px #000;
 }
-.footer-creator{
-    position: sticky;
-    bottom: 0;
-}
+
 .footer-textbar__link a{
     width: 350px;
   /*   border: 1px solid #000; */
