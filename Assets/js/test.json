@@ -1,0 +1,82 @@
+[
+    {
+        "id": "1",
+        "title": "Đồng phục CNTT",
+        "description": "Chất liệu bền bỉ, thoáng mát, thân thiên với thiên nhiên môi trường, là bộ áo công nhân nổi tiếng nhất trường đại học Cần Thơ nói chung và trường Công Nghệ Thông Tin nói riêng.",
+        "opt1": "#00afef",
+        "opt2": "#ffffff",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "100000",
+        "images": 
+        ["Assets/img/CTU_logo.png","Assets/img/items/1/ctu-shirt.jpg"],
+        "discount": "20",
+        "rating": "2.5"
+    },
+    {
+        "id": "2",
+        "title": "2",
+        "description": "",
+        "opt1": "",
+        "opt2": "",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "",
+        "images": "",
+        "discount": ""
+    },
+    {
+        "id": "3",
+        "title": "3",
+        "description": "",
+        "opt1": "",
+        "opt2": "",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "",
+        "images": "",
+        "discount": ""
+    },
+    {
+        "id": "4",
+        "title": "4",
+        "description": "",
+        "opt1": "",
+        "opt2": "",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "",
+        "images": "",
+        "discount": ""
+    },
+    {
+        "id": "5",
+        "title": "5",
+        "description": "",
+        "opt1": "",
+        "opt2": "",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "",
+        "images": "",
+        "discount": ""
+    },
+    {
+        "id": "6",
+        "title": "6",
+        "description": "",
+        "opt1": "",
+        "opt2": "",
+        "opt3": "",
+        "opt4": "",
+        "opt5": "",
+        "price": "",
+        "images": "",
+        "discount": ""
+    }
+]

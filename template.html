@@ -43,37 +43,19 @@
             </ul>
         </nav>
         <div class="header-informations">
-            <a href="danhmuc.html" class="nav__link--catalog"><i class="nav-search-list ri-book-2-line"></i>Danh Mục</a>
+            <details class="nav-catalog__details">
+                <summary class="nav-search__summary nav__button--dropdown details__summary"><i class="nav-search-list ri-book-2-line"></i>Danh Mục</summary>
+                <div class="details__container">
+                    <a class="details__link" onclick="" href=""><i class="ri-shirt-fill"></i> Đồng Phục</a>
+                    <a class="details__link" onclick="" href=""><i class="ri-quill-pen-ai-fill"></i> Phụ Kiện</a>
+                    <a class="details__link" onclick="" href=""><i class="ri-cup-fill"></i> Bình Đựng Nước</a>
+                    <a class="details__link" onclick="" href=""><i class="ri-gift-fill"></i> Quà Tặng</a>
+                </div>
+            </details>
             <marquee class="header-informations__announcement" behavior="scroll" direction="left">Thông Báo!</marquee>
         </div>
     </header>
-    
-    <main class="page__main">
-        <section class="page__slider">
-            <div class="slider">
-                <img src="Assets/img/ATL.jpg" alt="" id="slide-1">
-                <img src="Assets/img/Banner-01.jpg" alt="" id="slide-2">
-                <img src="Assets/img/LogoCTU_with_text_2.png" alt="" id="slide-3">
-            </div>
-            <div class="slider-nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
-            </div>
-        </section>
-        <h1>PHỔ BIẾN NHẤT</h1>
-        <section class="page__items--container">
-            <div id="item1" class="page__item--EO"></div>
-            <div id="item2" class="page__item--EO"></div>
-            <div id="item3" class="page__item--EO"></div>
-            <div id="item4" class="page__item--EO"></div>
-            <div id="item5" class="page__item--EO"></div>
-            <div id="item6" class="page__item--EO"></div>
-            <div id="item7" class="page__item--EO"></div>
-            <div id="item8" class="page__item--EO"></div>
-            <div id="item9" class="page__item--EO"></div>    
-        </section>
-    </main>
+    <main class="page__main"></main>
     <footer class="page__footer">
         <p class="footer-textbar footer-creator">&copy; 2025 - CT188 Nhóm 04 - Đại học Cần Thơ</p>
         <div class="footer-logo">
@@ -94,7 +76,6 @@
         <button class="to-top"><i class="to-top__icon ri-arrow-up-line"></i></button>
     </footer>
 
-    
     <!-- JavaScript -->
     <script src="Assets/js/JavaScript.js"></script>
 </body>

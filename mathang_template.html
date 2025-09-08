@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTU Souvenir Shop</title>
+    <link rel="stylesheet" href="Assets/css/fonts.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
+</head>
+<body id="sp1" class="page">
+    <header class="page__header">
+        <nav class="header__nav">
+            <a class="nav-logo__link-logo nav-logo-mobile" href="index.html">C<span style="color: white;">SS</span></a>
+            <a class="nav-logo__link-logo nav-logo" href="index.html">CTU <span style="font-family: K2D; color: white;">Souvenir Shop</span></a>
+            <button class="hamburger-menu" onclick="NavToggle()"><i class="ri-menu-line"></i></button>
+            <ul id="top-nav" class="nav__link--flex-row">
+                <li>
+                    <div class="nav-search-bar">
+                        <input class="nav-search-bar__input" type="text" placeholder="Đồng phục CTU, Móc khoá Capybara">
+                        <i class="nav-search-bar__icon ri-search-eye-line"></i>
+                    </div>
+                </li>
+                <li class="link-cart link-mobile">
+                    <a class="link__item" href="">
+                        <i class="ri-shopping-cart-2-fill"></i><span>Giỏ hàng</span>
+                    </a>
+                </li>
+                <details class="nav-lang__details link__item link-mobile">
+                    <summary class="nav-logo__summary details__summary"><div class="nav-logo__button">Ngôn Ngữ</div></summary>
+                    <div class="details__container--lang">
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-gb"></i> English</a>
+                        <a class="details__link--lang" onclick="" href=""><i class="fi fi-vn"></i> Tiếng Việt</a>
+                    </div>
+                </details>
+                <li><a class="link-support link-mobile" href="">Hỗ Trợ</a></li>
+                <li class="link-mobile">
+                    <a id="user-login" class="link-user--responsive link__item" href="html_login.html"><i class="ri-user-fill"></i></a>
+                    <a id="user-login" class="link-user link__item" href="html_login.html">Đăng Nhập</a>
+                </li>
+                <li class="link-mobile"><a id="user-sign-up" class="link-user link__item " href="html_signup.html">Đăng Ký</a></li>
+            </ul>
+        </nav>
+        <div class="header-informations">
+            <a href="danhmuc.html" class="nav__link--catalog"><i class="nav-search-list ri-book-2-line"></i>Danh Mục</a>
+            <marquee class="header-informations__announcement" behavior="scroll" direction="left">Thông Báo!</marquee>
+        </div>
+    </header>
+
+    <main class="page__main--product">
+        <div class="product__illustration">
+            <figure class="product__images">
+                <div class="list">
+                    <div class="item"><img src="Assets/img/items/1.png" alt="" class=""></div>
+                    <div class="item"><img src="Assets/img/items/2.png" alt="" class=""></div>
+                    <div class="item"><img src="Assets/img/items/3.png" alt="" class=""></div>
+                </div>
+                <div class="button">
+                    <button id="pb-prev"><</button>
+                    <button id="pb-next">></button>
+                </div>
+                <ul class="img-nav">
+                    <li class="active"><img src="Assets/img/items/1.png" alt="" class=""></li>
+                    <li><img src="Assets/img/items/2.png" alt="" class=""></li>
+                    <li><img src="Assets/img/items/3.png" alt="" class=""></li>
+                </ul>
+            </figure>
+        </div>
+        <section class="product__interaction">
+            <h1 class="interaction__title">Đồng phục CTU mới nhất giá sốc</h1>
+            <div class="interaction__statics">
+                <span id="rating" class="statics__rating">
+                    4.8/5
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                    <i class="ri-star-fill"></i>&nbsp;
+                </span>
+                &nbsp;&vert;&nbsp;
+                <span class="statics__rates">203 Đánh giá</span>
+                &nbsp;&vert;&nbsp;
+                <span class="statics__sold">1k+ Đã bán</span>
+                <h2 class="item-price interaction__price">90.000đ&nbsp;<span style="font-size: 12px; text-decoration: line-through;">(130.000đ)</span></h2>
+                <h3>Phân loại</h3>
+                <div class="interaction__types">
+                    <span>Màu: </span>
+                    <input class="statics__type" type="radio" name="color" id="white" style="accent-color: white;" checked>
+                    <input class="statics__type" type="radio" name="color" id="ctu-light-blue" style="accent-color: var(--ctu-light-blue);">
+                    <input class="statics__type" type="radio" name="color" id="ctu-deep-blue" style="accent-color: var(--ctu-deep-blue);">
+                </div>&nbsp;
+                <div class="interaction__quantity">
+                    <span>Số lượng: &nbsp;</span>
+                    <div class="quantity__button">
+                        <button id="quantity-minus" onclick="stepper(this)">-</button>
+                        <input type="number" name="" id="cart-quantity" min="1" max="99" value="1">
+                        <button id="quantity-plus" onclick="stepper(this)">+</button>
+                    </div>
+                    <span>&nbsp; 313 Sản phẩm có sẵn</span>
+                </div>
+                <div class="interaction__order">
+                    <a href="#" class="order__to-cart"><i class="ri-shopping-cart-line"></i> Thêm Vào Giỏ Hàng</a>
+                    <a href="#" class="order__buy-now">Mua Ngay</a>
+                </div>
+            </div>
+        </section>
+        <article class="product__information">
+            <h2>Thông Tin Chi Tiết</h2>
+            <p>
+                Thể hiện tinh thần sinh viên CTU với chiếc áo đồng phục polo chất lượng cao!<br>
+                <br>
+                Chất liệu: Cotton 100% thoáng mát, thấm hút mồ hôi tốt, mang lại cảm giác thoải mái suốt cả ngày dài.<br>
+                Thiết kế: Kiểu dáng polo lịch sự, trẻ trung, với logo Đại Học Cần Thơ được thêu sắc nét. Màu sắc xanh dương tươi sáng, năng động.<br>
+                Bảng size đa dạng: Phù hợp với nhiều vóc dáng (S, M, L, XL, XXL, XXXL). Xem bảng size chi tiết để chọn được kích cỡ vừa vặn nhất.<br>
+                Giá cực kỳ ưu đãi: Chỉ 99.000 VNĐ!<br>
+                <br>
+                Ưu điểm nổi bật:<br>
+                <br>
+                Chất liệu cotton cao cấp, mềm mại, thoáng mát.<br>
+                Thiết kế đẹp mắt, thể hiện tinh thần sinh viên CTU.<br>
+                Đường may chắc chắn, bền đẹp.<br>
+                Giá cả phải chăng, phù hợp với túi tiền sinh viên.<br>
+                <br>
+                Hướng dẫn bảo quản:<br>
+                <br>
+                Giặt máy ở chế độ nhẹ nhàng hoặc giặt tay.<br>
+                Không sử dụng chất tẩy mạnh.<br>
+                Ủi ở nhiệt độ thấp.<br>
+                Tránh phơi trực tiếp dưới ánh nắng mặt trời.<br>
+            </p>
+        </article>
+        <aside class="product__recomendation">
+            <h1>Recomendation</h1>
+            <div id="item1" class="page__item--EO"></div>
+        </aside>
+    </main>
+
+    <footer class="page__footer">
+        <p class="footer-textbar footer-creator">&copy; 2025 - CT188 Nhóm 04 - Đại học Cần Thơ</p>
+        <div class="footer-logo">
+            <a href="https://www.ctu.edu.vn/"><img src="Assets/img/LogoCTU_with_text_2.png" alt="" width="350"></a>
+        </div>
+        <h5 class="footer-text">
+            Địa chỉ: Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT<br>
+            Email: dhct@ctu.edu.vn
+        </h5>
+        <div class="footer-textbar footer--flex">
+            <p>Lượt truy cập:</p>
+            <div class="footer-textbar__link">
+                <a href="https://youtube.com/ctudhct"><i class="ri-tiktok-fill"></i></a> 
+                <a href="https://youtube.com/ctudhct"><i class="ri-youtube-fill"></i></a> 
+                <a href="https://youtube.com/ctudhct"><i class="ri-facebook-fill"></i></a>
+            </div>
+        </div>
+        <button class="to-top"><i class="to-top__icon ri-arrow-up-line"></i></button>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="Assets/js/JavaScript.js"></script>
+    <script src="Assets/js/mathang.js"></script>
+</body>
+</html>
