@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio | Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#FE5D26',
+                            dark: '#FE5D26'
+                        },
+                        secondary: {
+                            light: '#47682C',
+                            dark: '#059669'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #011627, #FE5D26);
+        }
+        .dark .gradient-text {
+            background-image: linear-gradient(45deg, #FE5D26, #F1F0EA);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Hy Lam</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">...And I'm a <span class="typej gradient-text">Game Developer</span></h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
+                        I build exceptional digital experiences with modern web technologies. Focused on creating beautiful, functional, and user-friendly applications.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            View Work
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-slide-up">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#FE5D26] dark:border-[#FE5D26] shadow-[0px_0px_45px_1px_rgba(254,93,38,1)] dark:shadow-[0px_0px_45px_5px_rgba(254,93,38,1)]">
+                        <img src="img/profile_pic.jpg" 
+                             alt="Profile" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary-light dark:bg-primary-dark opacity-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">About <span class="gradient-text">Me</span></h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img src="img/about_me.jpg" 
+                             alt="About" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+                    <p class="mb-6 text-gray-600 dark:text-gray-300">
+                        I'm a junior Multimedia Communication student with a strong passion for game development. 
+                        My long-term goal is to create a successful indie game that reaches a wide audience. 
+                        Beyond game design, I also have experience in web development and 3D animation. 
+                        With proven leadership skills and a logical mindset, 
+                        I enjoy guiding projects and turning creative ideas into impactful digital experiences.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm col-span-1">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-secondary-light/10 dark:bg-secondary-dark/10 mr-4">
+                                    <i class="fa-solid fa-user text-secondary-light dark:text-secondary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Basic Info</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                <strong>Full name:</strong> Lam Khang Hy
+                                <br>
+                                <i class="fa-solid fa-cake-candles"></i> - 31/03/2005
+                                <br>
+                                <i class="fa-solid fa-language"></i> - Vietnamese, English
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm col-span-2">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                    <i class="fas fa-graduation-cap text-primary-light dark:text-primary-dark"></i>
+                                </div>
+                                <h4 class="font-semibold">Education</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                <strong>Can Tho University</strong> – B.A. in Multimedia Communication <br>
+                                Expected Graduation: 2027 | Junior Year
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-6 text-center">My <span class="gradient-text">Skills</span></h2>
+            <div class="inline-flex items-center justify-center w-full">
+                <hr class="w-screen h-px my-8 bg-[#FE5D26] border-0 dark:bg-[#FE5D26]">
+                <span class="absolute px-3 font-semibold text-gray-900 -translate-x-1/2 bg-white left-60 dark:text-white dark:bg-gray-900">Soft Skills</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fa-solid fa-book text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">English</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <!-- Skill 2 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fa-solid fa-users-line text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Teamwork</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fa-solid fa-lightbulb text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Problem Sovling</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="inline-flex items-center justify-center w-full">
+                <hr class="w-screen h-px my-8 bg-[#FE5D26] border-0 dark:bg-[#FE5D26]">
+                <span class="absolute px-3 font-semibold text-gray-900 -translate-x-1/2 bg-white left-60 dark:text-white dark:bg-gray-900">Multimedia Skills</span>
+            </div>
+            <div class="inline-flex items-center justify-evenly flex-wrap w-full bg-white dark:bg-gray-700 rounded-lg shadow-sm p-6 gap-16 ">
+                <!-- Badges -->
+                <img src="https://img.shields.io/badge/Blender-%23F5792A.svg?logo=blender&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Figma-5C5543?logo=figma&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?&logo=Canva&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Houdini-FF4713?logo=houdini&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Davinci Resolve-233A51?logo=davinciresolve&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Audacity-0000CC?logo=audacity&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Fl--Studio-5C5543?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gU3ZnIFZlY3RvciBJY29ucyA6IGh0dHA6Ly93d3cub25saW5ld2ViZm9udHMuY29tL2ljb24gLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bWV0YWRhdGE+IFN2ZyBWZWN0b3IgSWNvbnMgOiBodHRwOi8vd3d3Lm9ubGluZXdlYmZvbnRzLmNvbS9pY29uIDwvbWV0YWRhdGE+DQo8Zz48Zz48Zz48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTcwLDE0LjRjLTEwLjgsOC4xLTI5LjksMzMuNC0zMS43LDQxLjljLTAuOCwzLjctMy4zLDMuMy01LjUtMC44Yy0yLjMtNC40LTEwLjEtMTEuMS0xNS43LTEzLjhjLTEzLTYuMi0yNS42LTYuMS0zOC41LDAuM2MtMTAuOCw1LjUtMjEuNywxOS4xLTIzLDI5Yy0wLjksNi4xLDAuNSw2LjUsMTQuMSwzLjZjMTEtMi4zLDMzLjItNS40LDMzLjktNC43YzAuMiwwLjItMC4yLDQuNS0wLjksOS42Yy0xLDguMi0wLjksMTAuNCwwLjUsMTcuNGMyLDkuNyw0LjMsMTQuNCw5LjQsMTkuOGM0LjcsNC45LDExLjMsNy40LDE3LjEsNi42YzkuNS0xLjQsMjIuNi0xMS45LDI3LjktMjJjMS42LTMuMSwzLjMtNS4xLDQuMy01LjFjMC45LDAsNS41LDQuNCwxMC40LDkuNmMxOS44LDIxLjcsMTkuNiwyMS40LDIxLjQsMjAuMmMzLjEtMS44LDYuMS05LjMsNi42LTE2LjdjMC45LTEyLjctMy42LTI0LjYtMTMtMzRjLTEwLTEwLTIxLjEtMTQtMzUuNC0xMi45bC04LjUsMC43bDAuNS00LjdjMC45LTkuNywxMy4xLTI4LjksMjUuOC00MC42YzQuMi0zLjksNy4zLTcuMiw3LjEtNy41QzE3Ni42LDkuOCwxNzMuNSwxMS44LDE3MCwxNC40eiIvPjxwYXRoIGZpbGw9IiMwMDAwMDAiIGQ9Ik04Mi42LDc5LjJjLTQuNSwwLjktNi4xLDEuNy04LjQsNC40Yy02LjYsNy45LTExLjUsMjMuNi0xNiw1MS45Yy0yLjgsMTcuNy0zLjUsNTAuMi0xLjQsNjQuOWMxLjYsMTAuOSw1LjEsMjMuNSw4LjIsMjkuNmMyLjksNS43LDEwLjIsMTIuOSwxNC43LDE0LjdjMTYuOCw2LjQsNDAuMS0xMC40LDYzLjYtNDUuN2M5LjEtMTMuNywxOS4zLTMyLjYsMjUuNC00Ny4zYzQuNi0xMSw5LjItMjQuOSw5LjItMjcuNmMwLTEuNC0yLjctNS4zLTcuMi0xMC40bC03LjEtOC4ybC0zLjYsNC42Yy0xNC41LDE4LjMtMzAuOSwyNC42LTQ0LjksMTcuMWMtNS42LTIuOS0xMS44LTkuNy0xNS4yLTE2LjRjLTIuNy01LjItNC42LTE1LjItNC42LTI0di04LjdMOTEuOCw3OEM4OS44LDc4LjEsODUuNyw3OC42LDgyLjYsNzkuMnoiLz48L2c+PC9nPjwvZz4NCjwvc3ZnPg==&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+            </div>
+            <div class="inline-flex items-center justify-center w-full">
+                <hr class="w-screen h-px my-8 bg-[#FE5D26] border-0 dark:bg-[#FE5D26]">
+                <span class="absolute px-3 font-semibold text-gray-900 -translate-x-1/2 bg-white left-60 dark:text-white dark:bg-gray-900">Tech Stack</span>
+            </div>
+            <div class="inline-flex items-center justify-evenly flex-wrap w-full bg-white dark:bg-gray-700 rounded-lg shadow-sm p-6 gap-12 ">
+                <img src="https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/TailwindCSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Three.js-000?logo=threedotjs&logoColor=fff" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/C-00599C?logo=c&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Godot-%23FFFFFF.svg?logo=godot-engine" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Unity-%23000000.svg?logo=unity&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                <img src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white" alt=""
+                    class="object-cover transition-transform duration-300 scale-150 hover:scale-[1.7]">
+                
+            </div>
+        </div>
+    </section>
+
+<!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold mb-2 text-center">My <span class="gradient-text">Projects</span></h2>
+                <p class="mb-12 text-center"><i class="text-gray-500">(Lastest first - Include this page of course!)</i></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6 flex flex-col gap-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Clone Ware</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                a WarioWare-inspired project built in Godot, 
+                                designed as both a playable game and a functional microgame engine with 4 familiar microgames. 
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Game</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Godot</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Side-Project</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="#contact" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Play Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/ShadowHunter.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Shadow Hunter TVC</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A 3D animation introducing a popular board game 'Shadow Hunter' made in Houdini.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">3D Animation</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Houdini</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">VFX</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="video/Houdini.mp4" onclick="window.open(this.href, '_blank', 'width=960,height=540'); return false;" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl items-center">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/ThreeJs.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">3D Sneaker Customizer with Three.js</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            An interactive 3D sneaker customizer built with Three.js, 
+                            featuring OBJ/MTL model loading, orbit controls, 
+                            part highlighting, and real-time color customization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Frontend</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Three.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="#contact" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/CSS.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce - CTU Souvenir Shop</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            CTU Souvenir Shop is a responsive frontend e-commerce prototype built with 
+                            HTML, CSS, and JavaScript. With product data and categories dynamically loaded from JSON files.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Frontend</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JSON</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="#contact" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/DuChoTanThe.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fanmade MV - 'Dù Cho Tận Thế'</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            VFX remake of Dù Cho Tận Thế - Erik using Davinci Resolve, 
+                            replicating the MV’s cinematic editing style with procedural effects and compositing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Music Video</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Davinci Resovle</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">VFX</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="https://youtu.be/cb-ZS0nooqk" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/MultiverseMedia.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Google Sites Forum - Multiverse Media</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A forum-style website prototype built with Google Sites, 
+                            structured around multiple content categories (news, blogs, podcasts, confessions). 
+                            Designed as a community hub for students to share posts and discussions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Google Site</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Forum</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="https://sites.google.com/student.ctu.edu.vn/forum/trang-ch%E1%BB%A7" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 7 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/Thoat.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Short Horror Flim - 'Thoát'</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A short horror film produced as part of a collaborative group course project, 
+                            serving both as a creative exercise and as a requirement for the assignment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Horror Film</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Davinci Resolve</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="https://youtu.be/6mSTD1TxBHk" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 8 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/BanSeLaAi.jpg" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fanmade MV - 'Bạn Sẽ Là Ai?'</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            An inspiring MV telling a story about future careering of student - "Who you will become in the future?"
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Music Video</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Davinci Resovle</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="https://youtu.be/gPa4qjndOwM" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 9 -->
+                <div class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/GiuMaiNuCuoi.png" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fanmade MV - 'Giữ Mãi Nụ Cười'</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            My first video-related project, 
+                            a music video that captures the journey of youth through the bond of close friends, 
+                            resonating with others by evoking and sharing these unforgettable moments.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Music Video</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Course-Project</span>
+                        </div>
+                        <div class="flex space-x-3 items-center">
+                            <a href="https://youtu.be/yZPphXtiWK0" class="px-6 py-3 bg-[#FE5D26] text-white rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Get In <span class="gradient-text">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-semibold mb-6">Some Useful Information</h3>
+                    <p class="mb-8 text-gray-600 dark:text-gray-300">
+                        Feel free to reach out to me for project inquiries, collaborations, or just to say hello. 
+                        I'll get back to you as soon as possible.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-envelope text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-300">hylam.negaaz@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Contact</h4>
+                                <p class="text-gray-600 dark:text-gray-300"><a class="gradient-text" onclick="window.open(`https://zalo.me/0946410212`)" href="#">Zalo</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Can Tho, Viet Nam</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Hylam-NegaaZ" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.facebook.com/negaaz/" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-medium">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <hr class="w-full h-px my-8 bg-[#FE5D26] border-0 dark:bg-[#FE5D26]">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">NegaaZ - HyLem</a>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">© <span id="thisDate" ></span> All Rights Reserved</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var typed = new Typed(".typej", {
+            strings: ["Game Developer", "Frontend Developer", "3D Animator", "Editor"],
+            typeSpeed: 50,
+            backSpeed: 50,
+            backDelay: 3000,
+            loop: true
+        })
+        document.getElementById("thisDate").innerHTML = year = new Date().getFullYear();
+    </script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation classes when elements come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+        });
+        
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = 'slideUp 0.5s ease-out forwards';
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on page load
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
