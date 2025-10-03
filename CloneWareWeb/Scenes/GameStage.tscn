@@ -1,0 +1,468 @@
+[gd_scene load_steps=24 format=3 uid="uid://bj83few1wovjr"]
+
+[ext_resource type="Script" uid="uid://ppusrw2t8w2" path="res://Scripts/GameStage.gd" id="1_cdbwu"]
+[ext_resource type="FontFile" uid="uid://ccd112efv7p7u" path="res://micro-games/pong/Assets/Typefaces/pixel_font.ttf" id="1_o6jg5"]
+[ext_resource type="Shader" uid="uid://b8uxhjw6i0y02" path="res://Scripts/background_scroll.gdshader" id="3_f3tuo"]
+[ext_resource type="Texture2D" uid="uid://d12ctw7s2n5tg" path="res://Assets/Background-loop.png" id="4_0k1j2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihcqr"]
+shader = ExtResource("3_f3tuo")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3tuo"]
+line_spacing = 6.0
+paragraph_spacing = 6.0
+font = ExtResource("1_o6jg5")
+font_size = 18
+font_color = Color(0.945098, 0.941176, 0.917647, 1)
+outline_size = 12
+outline_color = Color(0.54902, 0.109804, 0.0745098, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.239216)
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0k1j2"]
+line_spacing = 6.0
+paragraph_spacing = 6.0
+font = ExtResource("1_o6jg5")
+font_color = Color(0.945098, 0.941176, 0.917647, 1)
+outline_size = 8
+outline_color = Color(0.54902, 0.109804, 0.0745098, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.239216)
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="Curve" id="Curve_f3tuo"]
+_limits = [0.0, 1.0, 0.244318, 1.0]
+_data = [Vector2(0.244318, 0.258427), 0.0, 0.0, 0, 0, Vector2(0.761364, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0k1j2"]
+_data = [Vector2(0.278409, 0.505618), 0.0, 0.0, 0, 0, Vector2(0.863636, 0.88764), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ihcqr"]
+offsets = PackedFloat32Array(0, 0.3, 0.646667, 1)
+colors = PackedColorArray(1, 0.548798, 0.484859, 1, 0.537786, 1, 0.506004, 1, 0.995766, 1, 0.318056, 1, 0.52372, 1, 0.996343, 1)
+
+[sub_resource type="Animation" id="Animation_cdbwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanel:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -852)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ResultsPanel/ResultPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(84, 249)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ResultsPanel/ResultPanel:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(84, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ResultsPanel/ResultPanel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(935, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1w5oi"]
+resource_name = "Ready_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanel:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.659754, 0.659754),
+"update": 0,
+"values": [Vector2(0, -852), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f3tuo"]
+resource_name = "Ready_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionPanel:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.93187, 1.93187),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -852)]
+}
+
+[sub_resource type="Animation" id="Animation_ihcqr"]
+resource_name = "results_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ResultsPanel/ResultPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(84, -0.25, 0, 0.25, 0, 84, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ResultsPanel/ResultPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(935, -0.25, 0, 0.236911, -211, 202, -0.25, 0, 0.25, 0, 249, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1)
+}
+
+[sub_resource type="Animation" id="Animation_0k1j2"]
+resource_name = "results_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ResultsPanel/ResultPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(84, 249), Vector2(84, 935)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0k1j2"]
+_data = {
+&"RESET": SubResource("Animation_cdbwu"),
+&"Ready_in": SubResource("Animation_1w5oi"),
+&"Ready_out": SubResource("Animation_f3tuo"),
+&"results_in": SubResource("Animation_ihcqr"),
+&"results_out": SubResource("Animation_0k1j2")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3tuo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.334, 0.691, 0.396, 0.696)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.118, 0.453, 0.239, 0.996)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ihcqr"]
+font = ExtResource("1_o6jg5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_03jln"]
+font = ExtResource("1_o6jg5")
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_quwun"]
+font = ExtResource("1_o6jg5")
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rl1gb"]
+font = ExtResource("1_o6jg5")
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_e53a2"]
+font = ExtResource("1_o6jg5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjquw"]
+font = ExtResource("1_o6jg5")
+font_size = 32
+
+[node name="GameStage" type="Node2D"]
+script = ExtResource("1_cdbwu")
+
+[node name="GUI" type="Control" parent="."]
+z_index = 99
+layout_mode = 3
+anchors_preset = 0
+offset_right = 390.0
+offset_bottom = 844.0
+
+[node name="TransitionPanel" type="CanvasLayer" parent="GUI"]
+layer = 3
+offset = Vector2(0, -852)
+transform = Transform2D(1, 0, 0, 1, 0, -852)
+
+[node name="Background" type="ColorRect" parent="GUI/TransitionPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.945098, 0.941176, 0.917647, 1)
+
+[node name="Pattern" type="TextureRect" parent="GUI/TransitionPanel/Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ihcqr")
+layout_mode = 0
+offset_left = -121.0
+offset_top = 5.0
+offset_right = 512.0
+offset_bottom = 838.0
+texture = ExtResource("4_0k1j2")
+
+[node name="TransitionLabel" type="Label" parent="GUI/TransitionPanel/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 20)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.109804, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("1_o6jg5")
+theme_override_font_sizes/font_size = 32
+text = "Ready!"
+label_settings = SubResource("LabelSettings_f3tuo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GamePassedLabel" type="Label" parent="GUI/TransitionPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -319.0
+offset_right = 78.0
+offset_bottom = -296.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_0k1j2")
+
+[node name="UIHeartContainer" type="HBoxContainer" parent="GUI/TransitionPanel"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 139.0
+offset_right = 132.0
+offset_bottom = 179.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="GUI/TransitionPanel"]
+position = Vector2(207, 644)
+emitting = false
+amount = 400
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+emission_shape = 5
+emission_points = PackedVector2Array(200, 0, -200, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(100, -100)
+spread = 180.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1100.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+angle_min = 360.0
+angle_max = 360.0
+scale_amount_min = 16.0
+scale_amount_max = 32.0
+split_scale = true
+scale_curve_x = SubResource("Curve_f3tuo")
+scale_curve_y = SubResource("Curve_0k1j2")
+color_initial_ramp = SubResource("Gradient_ihcqr")
+
+[node name="Transition" type="AnimationPlayer" parent="GUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_0k1j2")
+}
+
+[node name="ResultsPanel" type="CanvasLayer" parent="GUI"]
+layer = 4
+
+[node name="ResultPanel" type="Panel" parent="GUI/ResultsPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 513.0
+offset_right = 111.0
+offset_bottom = 859.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3tuo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/ResultsPanel/ResultPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="ResultTitle" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+text = "- End Results -"
+label_settings = SubResource("LabelSettings_ihcqr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StageCompleted" type="HBoxContainer" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/StageCompleted"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stage Completed:"
+label_settings = SubResource("LabelSettings_03jln")
+vertical_alignment = 1
+
+[node name="ResultValue" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/StageCompleted"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+label_settings = SubResource("LabelSettings_quwun")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LifesLeft" type="HBoxContainer" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/LifesLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lifes left:"
+label_settings = SubResource("LabelSettings_rl1gb")
+vertical_alignment = 1
+
+[node name="ResultValue" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/LifesLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+label_settings = SubResource("LabelSettings_quwun")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Bonus" type="HBoxContainer" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/Bonus"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bonus:"
+label_settings = SubResource("LabelSettings_rl1gb")
+vertical_alignment = 1
+
+[node name="ResultValue" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/Bonus"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1000"
+label_settings = SubResource("LabelSettings_quwun")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FinalResults" type="VBoxContainer" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ResultLabel" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/FinalResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Final Score:"
+label_settings = SubResource("LabelSettings_e53a2")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ResultValue" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/FinalResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_sjquw")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Rank" type="VBoxContainer" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ResultLabel" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/Rank"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rank:"
+label_settings = SubResource("LabelSettings_e53a2")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ResultValue" type="Label" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer/Rank"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+label_settings = SubResource("LabelSettings_sjquw")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GUI/ResultsPanel/ResultPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "- Continue -"
+
+[node name="Games" type="Node" parent="."]
+
+[connection signal="pressed" from="GUI/ResultsPanel/ResultPanel/VBoxContainer/Button" to="." method="_on_button_pressed"]

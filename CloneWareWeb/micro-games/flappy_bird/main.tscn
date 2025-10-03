@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuprn5pma4rjv"]
+
+[ext_resource type="Script" uid="uid://1n20lbenorwq" path="res://micro-games/flappy_bird/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://7un2vjhby78k" path="res://micro-games/flappy_bird/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://douvwoe1qmn6g" path="res://micro-games/flappy_bird/pipe.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ds8ur86illb2w" path="res://micro-games/flappy_bird/ground.tscn" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://sakkgn0kjcam" path="res://micro-games/flappy_bird/assets/jump.mp3" id="4_kek77"]
+[ext_resource type="AudioStream" uid="uid://d20veh31ajjds" path="res://micro-games/flappy_bird/assets/lose.mp3" id="5_4c57u"]
+[ext_resource type="Shader" uid="uid://dxk1p7lqyv1l2" path="res://Assets/horizontal_scoll.gdshader" id="6_xc22m"]
+[ext_resource type="AudioStream" uid="uid://d4ak5rol4jn6f" path="res://micro-games/flappy_bird/assets/score.mp3" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://cu57hhi72ppb4" path="res://micro-games/flappy_bird/assets/cross_texture-loop.png" id="7_avhl4"]
+[ext_resource type="LabelSettings" uid="uid://bwvhg3clo8l7t" path="res://Assets/Congrat_label.tres" id="10_1d8d4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d6hw"]
+shader = ExtResource("6_xc22m")
+
+[sub_resource type="Gradient" id="Gradient_kek77"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4c57u"]
+gradient = SubResource("Gradient_kek77")
+
+[node name="main" type="Node2D"]
+material = SubResource("ShaderMaterial_kek77")
+script = ExtResource("1_h2yge")
+pipe_scene = ExtResource("2_lquwl")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Score" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_272bh")
+volume_db = -0.31
+pitch_scale = 2.47
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_kek77")
+volume_db = -9.315
+pitch_scale = 2.1
+attenuation = 1.8025
+
+[node name="Lose" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_4c57u")
+volume_db = -0.4
+pitch_scale = 3.12
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 535.0
+offset_bottom = 997.0
+color = Color(0.945098, 0.941176, 0.917647, 1)
+
+[node name="BackgroundDetail" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3d6hw")
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 551.0
+offset_bottom = 910.0
+texture = ExtResource("7_avhl4")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Ground" parent="." instance=ExtResource("4_1bvp3")]
+z_index = 1
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 113.0
+offset_top = 94.0
+offset_right = 264.0
+offset_bottom = 149.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+label_settings = ExtResource("10_1d8d4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+offset_right = 256.0
+offset_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture1D_4c57u")
+
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]

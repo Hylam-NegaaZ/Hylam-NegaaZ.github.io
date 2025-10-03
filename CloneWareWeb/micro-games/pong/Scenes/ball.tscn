@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://chh17gfjiuc8g"]
+
+[ext_resource type="Script" uid="uid://dhtt731if3lm5" path="res://micro-games/pong/Scripts/ball.gd" id="1_d60mj"]
+[ext_resource type="AudioStream" uid="uid://dqgatpamwpkob" path="res://micro-games/pong/Assets/SFX/powerUp.wav" id="2_376qj"]
+[ext_resource type="AudioStream" uid="uid://c0fpx7yjc8831" path="res://micro-games/pong/Assets/SFX/ping.wav" id="2_ij5cq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25osk"]
+size = Vector2(16, 16)
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_d60mj")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="powerUpSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_376qj")
+bus = &"SFX"
+
+[node name="pingSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_ij5cq")
+pitch_scale = 0.97
+bus = &"SFX"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_25osk")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0627451, 0.0509804, 0.0313726, 1)
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)

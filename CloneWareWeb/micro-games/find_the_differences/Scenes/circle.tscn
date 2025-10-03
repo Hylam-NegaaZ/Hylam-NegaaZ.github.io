@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl35uc68ac12c"]
+
+[ext_resource type="Texture2D" uid="uid://bwfmehocmhyan" path="res://micro-games/find_the_differences/Assets/circle-2.png" id="1_1kqgo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mojk5"]
+atlas = ExtResource("1_1kqgo")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_238fh"]
+atlas = ExtResource("1_1kqgo")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a48nh"]
+atlas = ExtResource("1_1kqgo")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g7kx"]
+atlas = ExtResource("1_1kqgo")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdddr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mojk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_238fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a48nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g7kx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Circle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.796875, 0.796875)
+sprite_frames = SubResource("SpriteFrames_tdddr")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0

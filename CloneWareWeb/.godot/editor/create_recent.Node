@@ -1,0 +1,14 @@
+Label
+AnimatedSprite2D
+TextureRect
+ColorRect
+TouchScreenButton
+Panel
+HBoxContainer
+VBoxContainer
+Node
+BoxContainer
+Container
+AnimationPlayer
+CanvasLayer
+AudioStreamPlayer
